@@ -98,7 +98,7 @@ void BiquadraticFilter(float2 fracCoord, out float2 weights[2], out float2 offse
 }
 
 // texSize = (width, height, 1/width, 1/height)
-float4 SampleTexture2DBiquadratic(TEXTURE2DX_ARGS(tex, smp), float2 coord, float4 texSize)
+float4 SampleTexture2DBiquadratic(TEXTURE2DX_PARAM(tex, smp), float2 coord, float4 texSize)
 {
     float2 xy = coord * texSize.xy;
     float2 ic = floor(xy);
@@ -115,7 +115,7 @@ float4 SampleTexture2DBiquadratic(TEXTURE2DX_ARGS(tex, smp), float2 coord, float
 }
 
 // texSize = (width, height, 1/width, 1/height)
-float4 SampleTexture2DBicubic(TEXTURE2DX_ARGS(tex, smp), float2 coord, float4 texSize, float2 maxCoord)
+float4 SampleTexture2DBicubic(TEXTURE2DX_PARAM(tex, smp), float2 coord, float4 texSize, float2 maxCoord)
 {
     float2 xy = coord * texSize.xy + 0.5;
     float2 ic = floor(xy);
