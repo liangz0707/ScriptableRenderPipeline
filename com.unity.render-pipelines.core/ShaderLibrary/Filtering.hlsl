@@ -2,6 +2,7 @@
 #define UNITY_FILTERING_INCLUDED
 
 // Ability for render pipelines to redefine TEXTURE2DX as texture array for single-pass stereo instancing
+// XRTODO: move Texture2DX system to core and update LW
 #ifndef TEXTURE2DX
     #define TEXTURE2DX              TEXTURE2D
     #define TEXTURE2DX_ARGS         TEXTURE2D_ARGS
