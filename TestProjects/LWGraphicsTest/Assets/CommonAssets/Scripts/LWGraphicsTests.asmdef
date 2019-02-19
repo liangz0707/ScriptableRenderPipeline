@@ -1,7 +1,6 @@
 {
     "name": "LWGraphicsTests",
     "references": [
-        "UnityEngine.TestTools.Graphics",
         "UnityEngine.TestTools.Graphics"
     ],
     "optionalUnityReferences": [
