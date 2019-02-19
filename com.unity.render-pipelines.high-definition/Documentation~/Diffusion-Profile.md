@@ -1,12 +1,12 @@
 # Diffusion Profile
 
-HDRP stores most [subsurface scattering](Subsurface-Scattering.html) settings in a __Diffusion Profile List__ Asset. A __Diffusion Profile List__ contains a set of 15 __Diffusion Profiles__ that you can edit and assign to your Materials.
+HDRP stores most [subsurface scattering](Subsurface-Scattering.html) settings in a __Diffusion Profile__ Asset. A __Diffusion Profile__ asset can be assigned to your Materials.
 
-To create a Diffusion Profile List, navigate to __Assets > Create > Rendering > Diffusion Profile List__. To use it, open your HDRP Asset and assign it to the __Diffusion Profile List__ property.
+To create a Diffusion Profile, navigate to __Assets > Create > Rendering > Diffusion Profile__. To use it, open your HDRP Asset and add it to the __Diffusion Profile List__ property.
 
 | Property| Description |
 |:---|:---|
-| **Name** | The name of the Diffusion Profile. Use this to identify your Diffusion Profiles when assigning them to your Translucent or Subsurface Scattering Materials. |
+| **Name** | The name of the Diffusion Profile. |
 | **Scattering Distance** | The shape and blur radius of the Diffusion Profile. Defines how far light travels below the surface. This affects the color bleeding and blurring behavior of Subsurface Scattering, as well as the color tint of Transmission. |
 | **Max Radius** | An informative helper value that displays the effective maximum radius (in millimeters) of the effect you define in Scattering Distance. You can not change this value directly. |
 | **Index of Refraction** | Specifies the refractive behavior of the Material. Larger values increase the intensity of specular reflection. For example, the index of refraction of skin is about 1.4. For more example values for the index of refraction of different materials, see Pixel and Poly’s [list of indexes of refraction values](https://pixelandpoly.com/ior.html). |
@@ -50,3 +50,19 @@ The results change if you enable shadows. The __Thin Object__ mode is likely to 
 
 Because you cannot control the distances HDRP derives from the shadow map, the best way to approach __Thick Object__ is to enable shadows, then adjust the __Scattering Distance__ until the overall transmission intensity is in the desired range, and then use the __Thickness Map__ to mask any shadow mapping artifacts.
 
+
+
+## Diffusion Profile Override Volume
+
+In HDRP you are limited to 15 __Diffusion Profile__ per view. If you want to use more than 15 __Diffusion Profile__ in a scene, you can use the __Diffusion Profile Override__ component available inside the volumes, it allows you to specify which diffusion profile to used in a certain area (or in the scene if the volume is global).  
+When the volume is not global you have access to the button __Fill profiles with scene materials__ which tries to fetch the diffusion profiles used inside the volume and fill the list with them.
+
+
+
+## Upgrading to the new diffusion profile system
+
+For HDRP package (5.5.0-preview and 6.3.0-preview) or newer.  
+Materials should smoothly upgrade themselves to reference the __Diffusion Profile__ asset instead of the old index __except__ for:
+- In shader graphs you'll have an error message saying that it can't upgrade the __Diffusion Profile__ so you'll have to repopulate the slot / node value.
+- Same thing for VFX graph, you'll loose the __Diffusion Profile__ reference.
+- Materials that are serialized inside the scene (not existing as asset), for these you can force the update using the menu __Edit > Render Pipeline > Upgrade all Materials to newer version__. Note that they must be loaded to be upgraded.
