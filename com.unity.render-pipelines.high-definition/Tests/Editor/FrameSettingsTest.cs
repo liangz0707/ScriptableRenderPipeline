@@ -47,7 +47,7 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline.Tests
                                 ++i;
                             }
                         }
-                        messageDuplicates.Append(" }}, ");
+                        messageDuplicates.Append(" }, ");
                     }
                 }
             }
