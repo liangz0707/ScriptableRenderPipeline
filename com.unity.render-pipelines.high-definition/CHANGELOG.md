@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [6.4.0-preview] - 2019-XX-XX
 
+### Added
+- Added Texture2DX system to selectively expand TEXTURE2D macros to texture array for single-pass stereo instancing
+
 ## [6.3.0-preview] - 2019-02-18
 
 ### Added
@@ -106,7 +109,6 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 - Added fade factor for decal projectors.
 - Added stereo instancing macros to most shaders used in VR
 - Added multi edition support for HDRenderPipelineAsset
-- Added Texture2DX system to selectively expand macros to texture array for single-pass stereo instancing
 
 ### Fixed
 - Fixed logic to disable FPTL with stereo rendering
